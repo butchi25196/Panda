@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Panda 🐼 đã nhắn tin cho bạn</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('https://res.cloudinary.com/drhw8emtv/image/upload/v1753941203/pink_j4ipue.jpg');
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-size: cover;
+      height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 0;
+    }
+
+    .chat-box {
+      width: 380px;
+      height: 600px;
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      background: url('https://res.cloudinary.com/drhw8emtv/image/upload/v1753935767/522002698_679238081830504_622832775188615315_n_o4nnol.jpg') no-repeat center;
+      background-size: cover;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      position: relative;
+      z-index: 1;
+    }
+
+    .chat-header, .chat-footer {
+      backdrop-filter: blur(8px);
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      justify-content: space-between;
+    }
+
+    .chat-header {
+      height: 50px;
+    }
+
+    .chat-footer {
+      height: 50px;
+      gap: 8px;
+    }
+
+    .chat-header .left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: url('https://res.cloudinary.com/drhw8emtv/image/upload/v1753937908/488709718_2953596548178245_7204985509561821035_n_mapliw.jpg') no-repeat center;
+      background-size: cover;
+    }
+
+    .chat-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 20px 10px;
+      gap: 10px;
+    }
+
+    .bubble-left-1, .bubble-left-2 {
+      align-self: flex-start;
+      background: #362d3b;
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 5px 25px 25px 25px;
+      max-width: 75%;
+      font-size: 15px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .bubble-right {
+      align-self: flex-end;
+      background: #ce93d8;
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 25px;
+      max-width: 75%;
+      font-size: 15px;
+      display: inline-flex;
+      gap: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .bubble-right button {
+      background: #f06292;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 6px 14px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .bubble-right button:hover {
+      background: #d080ff;
+      transform: scale(1.05);
+    }
+
+    .move {
+      transform: translate(-200%, -200%);
+      transition: 0.01s;
+    }
+
+    .chat-footer input {
+      flex: 1;
+      padding: 8px 12px;
+      border-radius: 20px;
+      border: none;
+      outline: none;
+      background: #333;
+      color: #fff;
+    }
+
+    .chat-footer i {
+      color: #fff;
+      font-size: 18px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="chat-box">
+    <div class="chat-header">
+      <div class="left">
+        <div class="avatar"></div>
+        <span><strong>Panda 🐼</strong></span>
+      </div>
+      <div class="right">
+        <!-- Icon set giữ nguyên -->
+      </div>
+    </div>
+
+    <div class="chat-content">
+      <div class="bubble-left-1">
+        Gửi bé, <br>Hôm qua chưa chốt kèo vote việc ngừng liên lạc đó nha 😆<br>Nhưng chú nghĩ không cần thiết phải như vậy đâu. Chú vẫn muốn có người để chia sẻ nhiều điều thú vị hằng ngày, như về công việc, những niềm vui nhỏ nhặt hay những chuyến đi chẳng hạn.<br>Cảm giác được trò chuyện, được chia sẻ vẫn là một phần mà chú thấy quý giá lắm. <br>Nên là bé vote lại đi nha :))))
+        <br>Chú hiểu bé lo lắng, nhưng mà thật sự cái gì quan trọng thì vẫn giữ lại, vẫn trân trọng. <br>
+        Bé vote lại ở bên dưới nè 😊
+      </div>
+      <div class="bubble-left-2">Chúng ta vẫn nói chuyện tiếp nhé?</div>
+      <div class="bubble-right">
+        <button id="love">Có</button>
+        <button id="no-love">Không</button>
+      </div>
+    </div>
+
+    <div class="chat-footer">
+      <input type="text" placeholder="Aa">
+      <i>👍</i>
+    </div>
+  </div>
+
+  <!-- Nhạc tự động -->
+  <audio id="bg-music" autoplay loop muted>
+    <source src="https://res.cloudinary.com/drhw8emtv/video/upload/v1753945959/First_Love_-_Sad_Emotional_Piano_Song_Instrumental_-_Jurrivh_vaf3sc.mp3" type="audio/mpeg">
+    Trình duyệt của bạn không hỗ trợ phát nhạc.
+  </audio>
+
+  <script>
+    const love = document.getElementById("love");
+    const noLove = document.getElementById("no-love");
+    const audio = document.getElementById("bg-music");
+
+    love.addEventListener("click", () => {
+      alert("Chú biết ngay mà, kkk  \nNhớ nhắn lại cho chú nha ♥");
+    });
+
+    noLove.addEventListener("mouseover", () => {
+      noLove.classList.toggle("move");
+    });
+
+    noLove.addEventListener("click", () => {
+      alert("Không cho chọn đấy :)))\nLàm gì nhau nào 😆");
+    });
+
+    // Cố gắng phát nhạc ngay
+    window.addEventListener('DOMContentLoaded', () => {
+      const playAudio = () => {
+        audio.muted = false;
+        audio.play().catch((e) => {
+          console.log("Chưa phát được nhạc:", e);
+        });
+      };
+
+      // Tự phát nhạc nếu được
+      playAudio();
+
+      // Nếu không được, phát khi người dùng tương tác
+      document.body.addEventListener('click', playAudio, { once: true });
+    });
+  </script>
+</body>
+</html>
